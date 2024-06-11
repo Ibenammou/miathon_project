@@ -6,7 +6,6 @@ from tensorflow import keras
 import numpy as np
 import cv2
 from keras.models import load_model
-import numpy as np
 import speech_recognition as sr
 
 # Define the absolute path to the haarcascade file
@@ -94,7 +93,8 @@ while True:
         audio_data = recognizer.listen(source)
 
     try:
-        text = recognizer.recognize_google(audio_data)
+        # Specify the language parameter for recognize_google
+        text = recognizer.recognize_google(audio_data, language="fr-FR")
         print("You said:", text)
     except sr.UnknownValueError:
         print("Could not understand audio")
